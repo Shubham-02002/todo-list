@@ -3,11 +3,12 @@ const bodyParser = require('body-parser')
 
 const app = express()
 
-var items = []
+var items = [ "Buy Food", "Cook Food" , "Eat Food" ]
 
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({extended:true}))
+app.use(express.static("public"))
 
 app.get("/",function(req,res){
     var today = new Date();
@@ -22,7 +23,7 @@ app.get("/",function(req,res){
     
 
     
-    res.render("list",{kindOfDay:day, newListItem:items});
+    res.render("list",{kindOfDay:day, newListItems:items});
 })
 
 
